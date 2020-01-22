@@ -1,0 +1,7 @@
+APP_CONFIG = {
+  "mongo": {
+    "hostString": "	9a.mongo.evennode.com:27017,9b.mongo.evennode.com:27017",
+    "user": "4947f451db29ea93bb224895bc6adab6",
+    "db": "4947f451db29ea93bb224895bc6adab6"
+  }
+}
