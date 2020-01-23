@@ -11,28 +11,6 @@ const donate_key = '339f0a91edb2785e2ba72244a4941734d25e539f2d6e679bfb830253d5c0
 const bot_owner = 542439242;
 let giving = false;
 var wall_to_send = '';
-var mongoPassword = 'Nana12345';
-			
-var http = require('http');
-var server = http.createServer(function(req, res) {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-
-  var config = JSON.parse(process.env.APP_CONFIG);
-  var MongoClient = require('mongodb').MongoClient;
-
-  MongoClient.connect(
-    "mongodb://" + config.mongo.user + ":" + encodeURIComponent(mongoPassword) + "@" + 
-    config.mongo.hostString, 
-    function(err, db) {
-      if(!err) {
-        res.end("We are connected to MongoDB");
-      } else {
-        res.end("Error while connecting to MongoDB");
-      }
-    }
-  );
-});
-server.listen(process.env.PORT);
 
 const cars = [
 	{
@@ -1593,7 +1571,7 @@ cmd.hear(/^(?:имущество)$/i, async (message, bot) => {
 });
 
 cmd.hear(/^(?:баланс)$/i, async (message, bot) => {
-	let text = `баланс: ${utils.sp(message.user.balance)}$\n💳Денег в банке: ${utils.sp(message.user.bank)}$`;
+	let text = `я перезапущен с новыми изменениями`;
 	if(message.user.btc) text += `\n💎Биткоинов: ${utils.sp(message.user.btc)}฿`;
 
 	return bot(text);
@@ -1835,7 +1813,7 @@ cmd.hear(/^(?:ник)\s(вкл|выкл)$/i, async (message, bot) => {
 });
 
 cmd.hear(/^(?:ник)\s(.*)$/i, async (message, bot) => {
-	if(message.args[1].length >= 10) return bot(`слишком длинный запрос (максимум: 10 символов)`);
+	if(message.args[1].length > 10) return bot(`слишком длинный запрос (максимум: 10 символов)`);
 
 	message.user.tag = message.args[1];
 	return bot(`теперь вы «${message.user.tag}»`);
@@ -3347,7 +3325,7 @@ cmd.hear(/^(?:ферма|🔋Ферма)$/i, async (message, bot) => {
 
 cmd.hear(/^(?:restart)$/i, async (message, bot) => {
 	if(message.senderId !== 542439242) return;
-	await bot(`бот перезагружается.`);
+	await bot(`бот перезагружается`);
 
 	await saveUsers();
 	process.exit(-1);
