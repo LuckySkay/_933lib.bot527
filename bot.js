@@ -1,17 +1,3 @@
-console.log('Bot has been started');
-const { VK } = require('vk-io');
-const vk = new VK();
-const commands = [];
-const request = require('prequest');
-let user = new VK();
-const requests = require('request');
-const fs = require("fs");
-const rq = require("prequest");
-const donate_key = '339f0a91edb2785e2ba72244a4941734d25e539f2d6e679bfb830253d5c02e29ad77e6e6dcca71c4465b0';
-const bot_owner = 542439242;
-let giving = false;
-var wall_to_send = '';
-
 const cars = [
 	{
 		name: 'Lada Granta',
